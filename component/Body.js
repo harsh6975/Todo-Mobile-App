@@ -7,6 +7,7 @@ import {
   Button,
   FlatList,
   ImageBackground,
+  Alert,
 } from "react-native";
 import TodoItem from "./TodoItem";
 
@@ -17,10 +18,15 @@ function Body() {
   const [todo, setTodo] = useState();
 
   const addHandler = () => {
-    if (todo.length == 0) return alert("Todo Empty");
+    if (todo.length == 0)
+      return Alert.alert("Oops!", "No todo added", [
+        { text: "Close", onPress: () => console.log("Closed") },
+      ]);
     list.map((item) => {
       if (item == todo) {
-        alert("Already Added");
+        Alert.alert("Oops!", "Already Added", [
+          { text: "Close", onPress: () => console.log("Closed") },
+        ]);
         return;
       }
     });
@@ -47,7 +53,7 @@ function Body() {
       oldItem.done = true;
       newList.push(oldItem);
     }
-    setList(newList); 
+    setList(newList);
   };
 
   return (

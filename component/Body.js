@@ -15,13 +15,15 @@ const image = "../assets/background.jpg";
 
 function Body() {
   const [list, setList] = useState([]);
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState("");
 
   const addHandler = () => {
-    if (todo.length == 0)
-      return Alert.alert("Oops!", "No todo added", [
+    if (todo.length == 0) {
+      Alert.alert("Oops!", "No todo added", [
         { text: "Close", onPress: () => console.log("Closed") },
       ]);
+      return;
+    }
     list.map((item) => {
       if (item == todo) {
         Alert.alert("Oops!", "Already Added", [
@@ -77,7 +79,9 @@ function Body() {
         </View>
         <View>
           {list.length > 0 && (
-            <Text style={styles.textleft}>Your Todo ({list.length})</Text>
+            <Text style={[styles.textleft, styles.bold, styles.todo]}>
+              Your Todos ({list.length})
+            </Text>
           )}
           <FlatList
             data={list}
@@ -95,10 +99,17 @@ export default Body;
 
 const styles = StyleSheet.create({
   image: {
-    minHeight: 600,
+    minHeight: 610,
   },
   textleft: {
     marginLeft: 10,
+  },
+  bold: {
+    fontWeight: "bold",
+  },
+  todo: {
+    fontSize: 18,
+    color: "white",
   },
   add: {
     flexDirection: "row",

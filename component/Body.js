@@ -77,12 +77,13 @@ function Body() {
             <Button title="Add" onPress={addHandler} />
           </View>
         </View>
-        <View>
-          {list.length > 0 && (
-            <Text style={[styles.textleft, styles.bold, styles.todo]}>
-              Your Todos ({list.length})
-            </Text>
-          )}
+
+        {list.length > 0 && (
+          <Text style={[styles.textleft, styles.bold, styles.todo]}>
+            Your Todos ({list.length})
+          </Text>
+        )}
+        <View style={styles.list}>
           <FlatList
             data={list}
             renderItem={({ item }) => (
@@ -113,6 +114,9 @@ const styles = StyleSheet.create({
   },
   add: {
     flexDirection: "row",
+  },
+  list: {
+    flex: 1,
   },
   input: {
     borderWidth: 1,

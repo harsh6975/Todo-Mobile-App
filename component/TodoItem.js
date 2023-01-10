@@ -1,38 +1,35 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
+
 function TodoItem({ item, buttonHandler }) {
   return (
-    <View>
-      <ScrollView>
-        <View style={styles.todo}>
-          <Text
-            style={[
-              styles.item,
-              item && item.done ? styles.strikeThroughtextStyle : styles.item,
-            ]}
-          >
-            {item.name}
-          </Text>
-          <View style={styles.button}>
-            <Button
-              title="Done"
-              onPress={() => {
-                buttonHandler(item.key, "done");
-                alert("Done");
-              }}
-            />
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="Delete"
-              onPress={() => {
-                buttonHandler(item.key, "delete");
-                alert("Deleted");
-              }}
-            />
-          </View>
-        </View>
-      </ScrollView>
+    <View style={styles.todo}>
+      <Text
+        style={[
+          styles.item,
+          item && item.done ? styles.strikeThroughtextStyle : styles.item,
+        ]}
+      >
+        {item.name}
+      </Text>
+      <View style={styles.button}>
+        <Button
+          title="Done"
+          onPress={() => {
+            buttonHandler(item.key, "done");
+            alert("Done");
+          }}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          title="Delete"
+          onPress={() => {
+            buttonHandler(item.key, "delete");
+            alert("Deleted");
+          }}
+        />
+      </View>
     </View>
   );
 }
@@ -41,6 +38,7 @@ export default TodoItem;
 
 const styles = StyleSheet.create({
   todo: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
   },

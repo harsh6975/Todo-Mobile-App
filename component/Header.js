@@ -14,7 +14,7 @@ export default Header;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: "#DC143C",
-    padding: 25,
+    padding: 12,
   },
   headerName: {
     textAlign: "center",
